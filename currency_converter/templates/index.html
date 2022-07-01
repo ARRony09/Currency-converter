@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Currency Converter{% endblock %}
+
+
+{% block body %}
+<div class="container my-2">
+    <h3 style="text-align:center">Currency Conversion</h3>
+<form method="POST" class="col-md"">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="col-form-label mt-2" for="inputDefault"></label>
+        <input type="text" class="form-control" name="currency" placeholder="Currency Choose" id="inputDefault">
+      </div>
+<form>
+
+
+
+<form method="POST" class="col-md"">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="col-form-label mt-1" for="inputDefault"></label>
+        <input type="text" class="form-control" name="currency2" placeholder="Currency Choose" id="inputDefault">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label mt-1" for="inputDefault"></label>
+        <input type="number" class="form-control" name="amount" placeholder="Enter amount" id="inputDefault">
+    </div>
+    <div class="input-group-btn my-2">
+        <button type="submit" class="btn btn-success">Calculate</button>
+      </div>
+<form>
+
+    {% if conversion_rate and base_code and target_code %}
+    <div class="container">
+    
+    <strong>Conversion: </strong>{{base_code}} to {{target_code}}
+    <br>
+    Conversion rate: {{conversion_rate}}
+    <br>
+    Amount: {{Amount}} {{target_code}}
+</div>
+{% endif %}
+</div>
+{% endblock %}
